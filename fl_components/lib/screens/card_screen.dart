@@ -1,6 +1,5 @@
+import 'package:fl_components/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import 'package:fl_components/widgets/custom_card_type_1.dart';
 
 class CardScreen extends StatelessWidget {
   const CardScreen({Key? key}) : super(key: key);
@@ -13,11 +12,8 @@ class CardScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           children: const [
             CustomCardType1(),
-            CustomCardType1(),
-            CustomCardType1(),
-            CustomCardType1(),
-            CustomCardType1(),
-            CustomCardType1()
+            SizedBox(height: 30),
+            CustomCardType2()
           ],
         ));
   }
