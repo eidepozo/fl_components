@@ -5,10 +5,10 @@ class AlertScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('AlertScreen'),
-      ),
-    );
+    return Scaffold(
+        appBar: AppBar(title: const Text('Alert Screen')),
+        body: const Center(
+          child: Text('AlertScreen'),
+        ));
   }
 }
