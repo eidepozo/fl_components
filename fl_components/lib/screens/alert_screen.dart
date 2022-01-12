@@ -6,7 +6,7 @@ class AlertScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Alert Screen')),
+        appBar: AppBar(title: const Text('Card Screen')),
         body: const Center(
           child: Text('AlertScreen'),
         ));
