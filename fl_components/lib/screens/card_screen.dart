@@ -13,7 +13,19 @@ class CardScreen extends StatelessWidget {
           children: const [
             CustomCardType1(),
             SizedBox(height: 30),
-            CustomCardType2()
+            CustomCardType2(
+                imageUrl: 'https://i.ytimg.com/vi/28IRaMc1AiU/hqdefault.jpg',
+                title: 'Mr. Incredible Stage 1'),
+            SizedBox(height: 30),
+            CustomCardType2(
+                imageUrl: 'https://i.ytimg.com/vi/2UFMEgixObs/hqdefault.jpg',
+                title: 'Mr. Incredible Stage 2'),
+            SizedBox(height: 30),
+            CustomCardType2(
+                imageUrl:
+                    'https://i.ytimg.com/vi/KZB5If5WSuU/maxresdefault.jpg',
+                title: 'Mr. Incredible Stage 4'),
+            SizedBox(height: 50)
           ],
         ));
   }
