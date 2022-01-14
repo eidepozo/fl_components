@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Listview2Screen extends StatelessWidget {
-  final options = const [
-    'Sure ...',
-    'Thanks for that',
-    'That sounds interesting',
-    'I wish I had your confidence'
-  ];
+  final options = const ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
 
   const Listview2Screen({Key? key}) : super(key: key);
 
