@@ -1,9 +1,36 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertScreen extends StatelessWidget {
   const AlertScreen({Key? key}) : super(key: key);
 
-  void displayAndroidDialog(BuildContext context) {
+  void displayDialogIOS(BuildContext context) {
+    showCupertinoDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            content: Column(mainAxisSize: MainAxisSize.min, children: const [
+              Text('Este es el contenido de la alerta'),
+              SizedBox(height: 10),
+              FlutterLogo(size: 100)
+            ]),
+            actions: [
+              TextButton(
+                child: const Text('Cancelar'),
+                onPressed: () => Navigator.pop(context),
+              ),
+              TextButton(
+                child: const Text('Ok'),
+                onPressed: () => Navigator.pop(context),
+              )
+            ],
+          );
+        });
+  }
+
+  void displayDialogAndroid(BuildContext context) {
     showDialog(
         barrierDismissible: true,
         context: context,
@@ -25,6 +52,10 @@ class AlertScreen extends StatelessWidget {
               TextButton(
                 child: const Text('Cancelar'),
                 onPressed: () => Navigator.pop(context),
+              ),
+              TextButton(
+                child: const Text('Ok'),
+                onPressed: () => Navigator.pop(context),
               )
             ],
           );
@@ -37,7 +68,9 @@ class AlertScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Card Screen')),
       body: Center(
           child: ElevatedButton(
-              onPressed: () => displayAndroidDialog(context),
+              onPressed: () => Platform.isAndroid
+                  ? displayDialogAndroid(context)
+                  : displayDialogIOS(context),
               child: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Text('Mostrar alerta', style: TextStyle(fontSize: 16)),
