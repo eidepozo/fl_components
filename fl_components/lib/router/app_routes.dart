@@ -32,7 +32,12 @@ class AppRoutes {
         route: 'home',
         name: 'HomeScreen',
         screen: const HomeScreen(),
-        icon: Icons.home)
+        icon: Icons.home),
+    MenuOption(
+        route: 'avatar',
+        name: 'AvatarScreen',
+        screen: const AvatarScreen(),
+        icon: Icons.supervised_user_circle_outlined)
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
