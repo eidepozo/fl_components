@@ -28,20 +28,27 @@ class AppRoutes {
         name: 'Alert Screen',
         screen: const AlertScreen(),
         icon: Icons.warning),
-    MenuOption(
+    /*MenuOption(
         route: 'home',
         name: 'HomeScreen',
         screen: const HomeScreen(),
         icon: Icons.home),
+        */
     MenuOption(
         route: 'avatar',
         name: 'AvatarScreen',
         screen: const AvatarScreen(),
-        icon: Icons.supervised_user_circle_outlined)
+        icon: Icons.supervised_user_circle_outlined),
+    MenuOption(
+        route: 'animated',
+        name: 'Animated Container',
+        screen: const AnimatedScreen(),
+        icon: Icons.play_circle_outline_outlined),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
     Map<String, Widget Function(BuildContext)> appRoutes = {};
+    appRoutes.addAll({'home': (BuildContext context) => const HomeScreen()});
 
     for (final option in menuOptions) {
       appRoutes.addAll({option.route: (BuildContext context) => option.screen});
