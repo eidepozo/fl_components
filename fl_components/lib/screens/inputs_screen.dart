@@ -15,11 +15,23 @@ class InputScreen extends StatelessWidget {
                 child: Column(
                   children: const [
                     CustomInputField(
-                        hintText: 'Nombre del usuario',
-                        labelText: 'Nombre',
-                        helperText: 'Solo 3 letras',
-                        suffix: Icons.keyboard_outlined,
-                        icon: Icons.verified_user_sharp)
+                        hintText: 'Nombre del usuario', labelText: 'Nombre'),
+                    SizedBox(height: 20),
+                    CustomInputField(
+                        hintText: 'Apellido del usuario',
+                        labelText: 'Apellido'),
+                    SizedBox(height: 20),
+                    CustomInputField(
+                      hintText: 'Correo del usuario',
+                      labelText: 'Email',
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                    SizedBox(height: 20),
+                    CustomInputField(
+                      hintText: 'Clave del usuario',
+                      labelText: 'Contraseña',
+                      obscureText: true,
+                    ),
                   ],
                 ))));
   }
