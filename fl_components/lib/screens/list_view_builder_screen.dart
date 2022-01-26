@@ -37,6 +37,13 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
     add5();
     isLoading = false;
     setState(() {});
+
+    if (scrollController.position.pixels + 100 <=
+        scrollController.position.maxScrollExtent) return;
+
+    scrollController.animateTo(scrollController.position.pixels + 120,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.fastOutSlowIn);
   }
 
   void add5() {
@@ -44,6 +51,14 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
     imagesId.addAll([1, 2, 3, 4, 5].map((e) => lastId + e));
     //print(imagesId);
     setState(() {});
+  }
+
+  Future<void> onRefresh() async {
+    await Future.delayed(const Duration(seconds: 2));
+    final lastId = imagesId.last;
+    imagesId.clear();
+    imagesId.add(lastId + 1);
+    add5();
   }
 
   @override
@@ -56,21 +71,28 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
       removeTop: true,
       child: Stack(
         children: [
-          ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              controller: scrollController,
-              itemCount: imagesId.length,
-              itemBuilder: (BuildContext context, int index) {
-                return FadeInImage(
-                    width: double.infinity,
-                    height: 300,
-                    fit: BoxFit.cover,
-                    placeholder: const AssetImage('assets/jar-loading.gif'),
-                    image: NetworkImage(
-                        'https://picsum.photos/500/300?image=${imagesId[index] + 1}'));
-              }),
-          Positioned(
-              bottom: 40, left: size.width * 0.5 - 30, child: const LocalIcon())
+          RefreshIndicator(
+            onRefresh: onRefresh,
+            color: AppThemes.primary,
+            child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                controller: scrollController,
+                itemCount: imagesId.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return FadeInImage(
+                      width: double.infinity,
+                      height: 300,
+                      fit: BoxFit.cover,
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      image: NetworkImage(
+                          'https://picsum.photos/500/300?image=${imagesId[index] + 1}'));
+                }),
+          ),
+          if (isLoading)
+            Positioned(
+                bottom: 40,
+                left: size.width * 0.5 - 30,
+                child: const LocalIcon())
         ],
       ),
     ));
